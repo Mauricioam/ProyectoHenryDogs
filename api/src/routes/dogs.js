@@ -84,18 +84,37 @@ router.get("/:dogId", async (req, res, next) => {
       )
     ) {
       let dogsDb = await Dog.findAll({
+        include: Temperament,
         where: {
           id: dogId,
-        },
+        }
       });
-
-      dogsDb.length ? res.json(dogsDb) : "";
+      let dogsDbFiltered = dogsDb.map(ele => {
+        return {
+          id: ele.id,
+          image: ele.image,
+          name: ele.name,
+          temperaments: ele.temperaments.map((ele) => ele.name),
+          weight: `${ele.minWeight} - ${ele.maxWeight}`,
+          height: `${ele.minHeight} - ${ele.maxHeight}`,
+          life_expectancy: ele.life_expectancy  }})
+      
+          res.json(dogsDbFiltered)
     } else {
       let findDog = await dogsApi.data.filter((ele) => ele.id == dogId);
-
-      findDog.length
-        ? res.json(findDog)
-        : res.status(404).send("Id not found");
+      let dogsApiFiltered = await findDog.map((ele) => {
+        return {
+          id: ele.id,
+          image: ele.image.url,
+          name: ele.name,
+          temperament: ele.temperament,
+          weight: ele.weight.metric,
+          height: ele.height.metric,
+          life_expectancy: ele.life_span
+        }}); 
+        dogsApiFiltered.length
+        ? res.json(dogsApiFiltered)
+        : res.status(404).send("Sorry we couldn't find anything :(");
     }
   } catch (error) {
     next(error);
