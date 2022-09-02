@@ -14,20 +14,32 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    height: {
+    maxHeight: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    weight: {
-      type: DataTypes.FLOAT,
+    minHeight: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    maxWeight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    minWeight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    image :{
+      type: DataTypes.STRING,
+      allowNull : false
     },
     life_expectancy: {
       type: DataTypes.INTEGER,
     },
-    db_create: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   });
 };
