@@ -30,9 +30,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    image :{
+    image: {
       type: DataTypes.STRING,
-      allowNull : false
+      allowNull: false,
     },
     life_expectancy: {
       type: DataTypes.INTEGER,
