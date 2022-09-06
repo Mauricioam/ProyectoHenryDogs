@@ -9,6 +9,7 @@ let dispatch = useDispatch()
 function onSubmit(event){
     event.preventDefault()
    dispatch(searchDog(search))
+    
 }
 
 function inputChange(event){
@@ -18,7 +19,7 @@ function inputChange(event){
     <div>
             <form onSubmit={onSubmit}>
             <input type="text" onChange={inputChange} value={search}/>
-            <input type="submit" value="Search"/>
+            <input type="submit" value="Search" onReset={onSubmit}/>
             </form>
 
 

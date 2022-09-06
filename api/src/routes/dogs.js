@@ -88,6 +88,7 @@ router.get("/", async (req, res, next) => {
       let result = dogsDbFiltered.concat(findDogFiltered);
       result.length ? res.json(result) : res.status(404).send("Name not found");
     } else {
+      let arrangeTemp = []
       /*  Imagen
       Nombre
       Temperamento
@@ -107,17 +108,20 @@ router.get("/", async (req, res, next) => {
         };
       });
 
+
+
       let resultFiltered = await dogsApi.data.map((ele) => {
-        return {
+        arrangeTemp.push({
           id: ele.id,
           image: ele.image.url,
           name: ele.name,
-          temperament: ele.temperament,
+          temperament: Object.assign([],  ele.temperament).join("").split(","),
           weight: ele.weight.metric,
-        };
+        });
       });
-      let allDogsFiltered = dogsDbFiltered.concat(resultFiltered);
 
+      let allDogsFiltered = dogsDbFiltered.concat(arrangeTemp);
+      
       return res.send(allDogsFiltered);
     }
   } catch (error) {

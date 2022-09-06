@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
     let final = [...new Set(tempJoin)];
     let finalTrim = [];
     for (let j = 0; j < final.length; j++) {
-      finalTrim.push(final[j].trim());
+      finalTrim.push(final[j]);
     }
     
     for (let i = 0; i < finalTrim.length; i++) {

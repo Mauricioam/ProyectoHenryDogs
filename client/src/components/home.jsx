@@ -40,6 +40,7 @@ function handleOrderBySize(e){
 function handleTempFilter(e){
   e.preventDefault()
   dispatch(sortByTemp(e.target.value))
+  console.log(e.target.value)
   setOrder(e.target.value)
 } 
  
