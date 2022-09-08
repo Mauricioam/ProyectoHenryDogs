@@ -89,7 +89,7 @@ function handleAllOrCreated(e){
     </NavLink>  
        { dogs.length ?  dogs.map((dog) => {
         return (
-          <NavLink to={`home/${dog.id}`}>
+          <NavLink to={`/home/${dog.id}`}>
           <Dog
             key={dog.id}
             image={dog.image}

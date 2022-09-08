@@ -11,8 +11,8 @@ let idDogs = useSelector((state) => state.idDogs)
 let dispatch = useDispatch()
 useEffect(()=>{
         dispatch(getDogById(id))
-}
-)
+},[])
+
 console.log(idDogs)
 return(
     <div>
