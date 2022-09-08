@@ -32,14 +32,14 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+     
     },
     life_expectancy: {
       type: DataTypes.INTEGER,
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      
     },
   });
 };

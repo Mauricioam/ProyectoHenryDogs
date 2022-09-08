@@ -103,11 +103,11 @@ router.get("/", async (req, res, next) => {
           id: ele.id,
           image: ele.image,
           name: ele.name,
-          temperaments: ele.temperaments.map((ele) => ele.name),
+          temperament: ele.temperaments.map((ele) => ele.name),
           weight: `${ele.minWeight} - ${ele.maxWeight}`,
         };
       });
-
+      console.log(dogsDb)
 
 
       let resultFiltered = await dogsApi.data.map((ele) => {
@@ -159,7 +159,7 @@ router.get("/:dogId", async (req, res, next) => {
           id: ele.id,
           image: ele.image,
           name: ele.name,
-          temperaments: ele.temperaments.map((ele) => ele.name),
+          temperament: ele.temperaments.map((ele) => ele.name),
           weight: `${ele.minWeight} - ${ele.maxWeight}`,
           height: `${ele.minHeight} - ${ele.maxHeight}`,
           life_expectancy: ele.life_expectancy,
@@ -174,7 +174,7 @@ router.get("/:dogId", async (req, res, next) => {
           id: ele.id,
           image: ele.image.url,
           name: ele.name,
-          temperament: ele.temperament,
+          temperament: Object.assign([],  ele.temperament).join("").split(","),
           weight: ele.weight.metric,
           height: ele.height.metric,
           life_expectancy: ele.life_span,

@@ -5,6 +5,10 @@ export const SORT = "SORT"
 export const SIZE = "SIZE"
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
 export const TEMPERAMENTS = "TEMPERAMENTS"
+export const POST_DOG = "POST_DOG"
+export const SORT_CREATED = "SORT_CREATED"
+export const DOG_ID = "DOG_ID"
+
 
 export function getDogs() {
   return async function (dispatch) {
@@ -34,6 +38,21 @@ export function getTemperments(){
   }
 }
 
+export function getDogById(id){
+  return async function (dispatch){
+    try {
+      let dogId = await axios.get(`http://localhost:3001/api/dogs/${id}`)
+      return dispatch({
+          type: DOG_ID,
+          payload : dogId.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+}
+
 
 export function searchDog(search){
   return async function(dispatch){
@@ -44,7 +63,7 @@ export function searchDog(search){
         payload: dogs.data
       })
     } catch (error) {
-      console.log(error)
+     alert("Dog not found")
     }
   }
 }
@@ -70,4 +89,26 @@ export function sortByTemp(temp){
     payload:temp
 
   }
+}
+
+export function postDog(input){
+  return async function(dispatch){
+    try {
+      let post = await axios.post(`http://localhost:3001/api/dogs/`,input)
+      console.log(post)
+      return dispatch({
+        type: POST_DOG 
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export function sortByCreatedOrAll(order){
+  return{
+    type: SORT_CREATED,
+    payload:order
+  }
+  
 }
