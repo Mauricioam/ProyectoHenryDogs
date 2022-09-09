@@ -4,11 +4,13 @@ import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrA
 import Dog from "./dogCard";
 import SearchBar from "./searchBar";
 import { NavLink } from "react-router-dom";
-import DetailDog from "./dogDetail";
+import Pagination from "./pagination";
 
 export  default  function Home() {
     const [ order,setOrder ] = useState("")
-
+    const [currentPage, setCurrentPage] = useState(1)
+    const [numDogs,setNumDogs] = useState(8)
+  
   //get alldogs
   let dogs =  useSelector((state) => state.dogs)
   let dispatch = useDispatch()
@@ -16,11 +18,23 @@ export  default  function Home() {
     useEffect(() => {
     dispatch(getDogs())
   }, [])
+let dogsLength = dogs.length
+console.log(dogs)
 //get tempermanents 
 let temperaments = useSelector((state) => state.temperament)
 useEffect(()=>{
   dispatch(getTemperments())
 },[])
+// pagination
+let page = currentPage * numDogs // 1 * 8 = 8 // 2*8 = 16
+let initalIdex = page - numDogs// 8 - 8 = 0 // 16 - 8 = 8
+let showDogs = dogs.slice(initalIdex,page)
+console.log(showDogs)
+
+function handlePaged(page){
+  setCurrentPage(page)
+
+}
 
 //alphabetical order 
   function handleOrder(e){
@@ -48,11 +62,12 @@ function handleAllOrCreated(e){
   dispatch(sortByCreatedOrAll(e.target.value))
   setOrder(e.target.value)
 }
- 
+
 
   return (
     <div>
 
+<Pagination currentPage={currentPage} numDogs={numDogs} dogsLength={dogsLength} handlePaged={handlePaged}  />
 
      <SearchBar/>
     
@@ -87,7 +102,7 @@ function handleAllOrCreated(e){
     <NavLink to="/home/createDog">
     <button>Create your Dog!</button>
     </NavLink>  
-       { dogs.length ?  dogs.map((dog) => {
+       { showDogs.length ?  showDogs.map((dog) => {
         return (
           <NavLink to={`/home/${dog.id}`}>
           <Dog
@@ -100,6 +115,9 @@ function handleAllOrCreated(e){
          </NavLink>
         );
       }): "aca tengo q hacer componente loading" } 
+
+   
+
     </div>
   );
 }

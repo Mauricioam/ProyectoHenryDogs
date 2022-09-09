@@ -10,12 +10,14 @@ const initialState = {
 }
 
 export default function reducer( state = initialState, action){
+   
     switch(action.type){
         case GET_DOGS:
             return {
                 ...state,
                 dogs: action.payload,
-                dogsFiltered:action.payload
+                dogsFiltered:action.payload,
+                idDogs:action.payload
             }
         case SEARCH_DOG:
             return {
@@ -81,6 +83,7 @@ export default function reducer( state = initialState, action){
                         dogs: action.payload === "all" ? state.dogsFiltered : orderByCreated
                     }
                 case DOG_ID:
+                    console.log(action.payload)
                     return{
                         ...state,
                         idDogs: action.payload
