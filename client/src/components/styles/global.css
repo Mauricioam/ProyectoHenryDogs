@@ -1,0 +1,38 @@
+:root{
+    --background-color-cards-container:#FBF7EF;
+    --background-color-card : #DABB6C;
+    --background-color-footer-header:#766E87;
+    
+}
+
+
+
+*{
+    margin:0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+   
+}
+
+
+.all_button{
+    width: 8rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem ;
+    background-color: black;
+    color: antiquewhite;
+    font-weight: 300;
+}
+
+.all_button:hover{
+ 
+    color: black;
+    background-color: antiquewhite;
+    border: solid antiquewhite ;
+    transition: 0.5s;
+    cursor: pointer;
+    
+}
+
+

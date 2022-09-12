@@ -47,7 +47,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   const { name } = req.query;
-  let dogsApi = await axios.get(`${API_URL}?number=8&api_key=${API_KEY}`);
+  let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
   try {
     if (name) {
@@ -94,7 +94,7 @@ router.get("/", async (req, res, next) => {
       Temperamento
       Peso
  */
-      let dogsApi = await axios.get(`${API_URL}?number=8&api_key=${API_KEY}`);
+      let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
       let dogsDb = await Dog.findAll({
         include: Temperament,
       });

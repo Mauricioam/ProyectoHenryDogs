@@ -1,15 +1,15 @@
 import './App.css';
 import { BrowserRouter,Route, Switch} from "react-router-dom"
 
-import Home from './components/home';
-import LandingPage from './components/landingPage';
-import CreateDog from './components/createDog';
-import DetailDog from './components/dogDetail';
-
+import Home from './components/Home/home';
+import LandingPage from './components/Landing Page/landingPage';
+import CreateDog from './components/Home/createDog';
+import DetailDog from './components/DetailDog/dogDetail';
+import style from "./components/styles/global.css"
 
 
 function App() {
-  return (
+  return (  
     <BrowserRouter>
     <div className="App">
      <Switch>

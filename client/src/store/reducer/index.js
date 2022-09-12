@@ -1,11 +1,12 @@
-import { GET_DOGS, SEARCH_DOG, SIZE, SORT,GET_TEMPERAMENTS,TEMPERAMENTS ,POST_DOG ,SORT_CREATED,DOG_ID } from "../action"
+import { GET_DOGS, SEARCH_DOG, SIZE, SORT,GET_TEMPERAMENTS,TEMPERAMENTS ,POST_DOG ,SORT_CREATED,DOG_ID, CLEAR } from "../action"
 
 
 const initialState = {
     dogs: [],
     dogsFiltered : [],
     temperament: [],
-    idDogs:[]
+    idDogs:[],
+    foundDog:[]
 
 }
 
@@ -16,8 +17,8 @@ export default function reducer( state = initialState, action){
             return {
                 ...state,
                 dogs: action.payload,
-                dogsFiltered:action.payload,
-                idDogs:action.payload
+                dogsFiltered:action.payload
+            
             }
         case SEARCH_DOG:
             return {
@@ -83,11 +84,18 @@ export default function reducer( state = initialState, action){
                         dogs: action.payload === "all" ? state.dogsFiltered : orderByCreated
                     }
                 case DOG_ID:
-                    console.log(action.payload)
+                  
                     return{
                         ...state,
                         idDogs: action.payload
-                    } 
+                    }
+                case CLEAR:{
+                    return{
+                        ...state,
+                        idDogs : [],
+                     
+                    }
+                }
         default:
             return state
                 

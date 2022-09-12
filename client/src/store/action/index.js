@@ -8,7 +8,7 @@ export const TEMPERAMENTS = "TEMPERAMENTS"
 export const POST_DOG = "POST_DOG"
 export const SORT_CREATED = "SORT_CREATED"
 export const DOG_ID = "DOG_ID"
-
+export const CLEAR =  "CLEAR"
 
 export function getDogs() {
   return async function (dispatch) {
@@ -112,4 +112,11 @@ export function sortByCreatedOrAll(order){
     payload:order
   }
   
+}
+
+
+export function unMount(){
+  return {
+    type: CLEAR
+  }
 }

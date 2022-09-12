@@ -1,0 +1,61 @@
+ .landingPage_container{
+    max-width: 100%;
+    border: solid black;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+}
+
+.image_landig{
+    border: solid red;
+    background-image: url(../../../images/alvan-nee-8g0D8ZfFXyA-unsplash.jpg);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    width: 50vw;
+    height: 100vh;
+    
+}
+.container_title{
+    margin-top: 10rem;
+}
+.landing_welcome{
+    border: solid black;
+    border-radius: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+}
+
+.landing_title{
+    border: solid black;
+    background-color: black;
+    color:#FFD439;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.landing_text{
+    border: solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.button{
+    border: solid black;
+    color: #FFD439;
+    background-color: black;
+    padding: 1.2rem;
+    border-radius: 1rem;
+}
+
+.button:hover{
+color: white;
+}
+
+.link{
+    text-decoration: none;
+}
+
+ 

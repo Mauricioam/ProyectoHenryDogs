@@ -1,0 +1,35 @@
+.card{
+        
+        margin: 2rem 0rem 5rem 5rem;
+        padding-bottom: 1rem;
+        width: 18rem;
+        height: 25rem;
+        border:solid black 0.2rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        background-color:  #FFD439; 
+      
+}
+
+.card_img{
+    
+    max-width: 13rem;
+    max-height: 12rem;
+    border: solid #9DAAAA 0.2px;
+}
+
+.card_subtitle{
+    font-family: 'Arial Narrow Bold';
+    font-weight: 600;
+}
+
+.card_text{
+    text-align: center;
+}
+.card:hover{
+    background-color: #fff275;   
+}
