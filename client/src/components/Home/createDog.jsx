@@ -31,7 +31,7 @@ export default function CreateDog() {
     } else {
       setInput((temp) => ({
         ...temp,
-        temperament: [...temp.temperament, e.target.value],
+        temperament: [...temp.temperament," ", e.target.value],
       }));
     }
   }
@@ -156,17 +156,20 @@ export default function CreateDog() {
           
           <label className="label_form">Image</label>
           <input
-            type="file"
+            type="text"
             name="image"
             onChange={handleInputChange}
             value={input.image}
             className="form_input"
+            placeholder="URL"
+            autoComplete="off"
           />
           {error.image && <p className="error_text">{error.image}</p>}
           <label className="label_form">Life span</label>
           <input
             type="number"
             name="life_expectancy"
+            placeholder="years"
             onChange={handleInputChange}
             value={input.life_expectancy}
             className="form_input"
@@ -196,15 +199,11 @@ export default function CreateDog() {
           </ul>
 
 
-          <label className="label_form">Description</label>
-          <textarea name="description" cols="2" rows="12" className="description_textArea" onChange={handleInputChange}
-            value={input.description}/>
-          <br />
-          <br />
+    
        
           <div className="button_container">
-          <input type="submit" value="Create Dog" className="all_button" />
           <input type="reset" value="Reset Form" className="all_button" onClick={resetTemp} />
+          <input type="submit" value="Create Dog" className="all_button" />
           <NavLink to="/home">
             <button className="all_button">Back to Home</button>
           </NavLink>
@@ -238,9 +237,9 @@ function validate(input) {
     error.minWeight = "Can't be equal";
   }
 
-  if (input.image && !/\.(png|bmp|jpe?g)$/i.test(input.image)) {
-    error.image = "Only .png, .jpg";
-  }
+   if (input.image && !/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i.test(input.image)) {
+    error.image = "Only URL";
+  } 
 
   if (input.life_expectancy > 15) {
     error.life_expectancy = "Sure? The avarege dog lives about 10-13 years";

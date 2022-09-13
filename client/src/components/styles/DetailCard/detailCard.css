@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     justify-content:center;
-    background-color: var( --background-color-card);
+    background-color: var(--background-color-cards-container);
 
 }
 .info_container p {

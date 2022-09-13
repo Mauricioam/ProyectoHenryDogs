@@ -1,6 +1,6 @@
  .landingPage_container{
     max-width: 100%;
-    border: solid black;
+    
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -8,10 +8,10 @@
 }
 
 .image_landig{
-    border: solid red;
     background-image: url(../../../images/alvan-nee-8g0D8ZfFXyA-unsplash.jpg);
     background-size: cover; 
     background-repeat: no-repeat;
+   
     width: 50vw;
     height: 100vh;
     
@@ -37,7 +37,6 @@
 }
 
 .landing_text{
-    border: solid orange;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

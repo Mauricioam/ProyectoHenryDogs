@@ -64,7 +64,7 @@ export function searchDog(search){
         payload: dogs.data
       })
     } catch (error) {
-     alert("Dog not found")
+     alert(error)
     }
   }
 }
@@ -106,12 +106,12 @@ export function postDog(input){
   }
 }
 
-export function sortByCreatedOrAll(order){
-  return{
-    type: SORT_CREATED,
-    payload:order
+export  function sortByCreatedOrAll(order){
+  return async function(dispatch){
+    let dogs = await axios.get(`http://localhost:3001/api/dogs/`);
+    return dispatch({ type: SORT_CREATED,
+      payload:{order, "dogs": dogs.data}})
   }
-  
 }
 
 

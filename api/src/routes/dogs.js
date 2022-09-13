@@ -107,7 +107,7 @@ router.get("/", async (req, res, next) => {
           weight: `${ele.minWeight} - ${ele.maxWeight}`,
         };
       });
-      console.log(dogsDb)
+   
 
 
       let resultFiltered = await dogsApi.data.map((ele) => {

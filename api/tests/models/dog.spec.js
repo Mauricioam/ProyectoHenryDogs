@@ -1,4 +1,4 @@
-const { Dog, conn } = require('../../src/db.js');
+const { Dog, Temperament , conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
 describe('Dog model', () => {
@@ -20,3 +20,20 @@ describe('Dog model', () => {
     });
   });
 });
+
+
+describe("Temperament model", function(){
+  beforeEach(async function(){
+    await Temperament.sync({force : true})
+  })
+});
+
+it("sholud error if name is null", (done) => {
+  Temperament.create({id: "45ad45asd789"})
+  .then(() => done(new Error("Name can not be null")))
+  .catch(() => done())
+});
+
+it("name should be string", function(){
+  expect(typeof Temperament.name).equal("string")
+})

@@ -65,23 +65,24 @@ export default function reducer( state = initialState, action){
                     orderByTemp.push(state.dogsFiltered[i])
                 }
                 
-               }
-               console.log(orderByTemp)
+               } 
+               
                 return{
                     ...state,
-                    dogs: orderByTemp
-
-                }
+                    dogs: orderByTemp,
+                    
+                } 
                 case POST_DOG:
                     return {
                         ...state
                     }
                 case SORT_CREATED:
-                        let orderByCreated = action.payload === "created" ? state.dogsFiltered.filter(d => typeof d.id !== "number") : state.dogs
+                  
+                    let orderByCreated = action.payload.order === "created" ? state.dogsFiltered.filter(d => typeof d.id !== "number") : action.payload.dogs
                         
                     return{
                         ...state,
-                        dogs: action.payload === "all" ? state.dogsFiltered : orderByCreated
+                        dogs: action.payload.order === "all" ? action.payload.dogs : orderByCreated
                     }
                 case DOG_ID:
                   
@@ -93,7 +94,7 @@ export default function reducer( state = initialState, action){
                     return{
                         ...state,
                         idDogs : [],
-                     
+                        
                     }
                 }
         default:

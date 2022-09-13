@@ -7,7 +7,7 @@
     background-image: url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-vector%2Fcute-funny-dogs-seamless-pattern-illustration-cartoon-animal-dog-background-with-pets-puppy-dogs_1284-51489.jpg%3Fw%3D2000&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fdog-pattern&tbnid=7lMHWYJN21OxFM&vet=12ahUKEwjKuq7Hho76AhWlqpUCHV9OCBUQMyg4egQIARBS..i&docid=574chE8vfe_I-M&w=2000&h=2000&q=dogs%20background&ved=2ahUKEwjKuq7Hho76AhWlqpUCHV9OCBUQMyg4egQIARBS);
     justify-content: center;
     align-items: center;
-    background-color: var(--background-color-card) ;
+    background-color: var( --background-color-cards-container) ;
     
 }
 
@@ -17,6 +17,7 @@
     margin: 2.5rem 0 2rem 0;
     border-radius: 1rem;
     padding: 3rem;
+    padding-bottom: 3rem;
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;
