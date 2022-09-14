@@ -45,7 +45,8 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+
+ router.get("/", async (req, res, next) => {
   const { name } = req.query;
   let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
@@ -71,8 +72,8 @@ router.get("/", async (req, res, next) => {
         };
       });
 
-      let findDog = dogsApi.data.filter((ele) =>
-        ele.name.toLowerCase().includes(name.toLocaleLowerCase())
+        let findDog = dogsApi.data.filter((ele) =>
+          ele.name.toLowerCase().includes(name.toLocaleLowerCase())
       );
 
       let findDogFiltered = await findDog.map((ele) => {
@@ -86,14 +87,10 @@ router.get("/", async (req, res, next) => {
       });      
 
       let result = dogsDbFiltered.concat(findDogFiltered);
-      result.length ? res.json(result) : res.status(404).send("Name not found");
+      result.length ? res.json(result) : res.status(404).send("No dog found")
     } else {
       let arrangeTemp = []
-      /*  Imagen
-      Nombre
-      Temperamento
-      Peso
- */
+
       let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
       let dogsDb = await Dog.findAll({
         include: Temperament,
@@ -110,13 +107,13 @@ router.get("/", async (req, res, next) => {
    
 
 
-      let resultFiltered = await dogsApi.data.map((ele) => {
+       dogsApi.data.map((ele) => {
         arrangeTemp.push({
           id: ele.id,
           image: ele.image.url,
           name: ele.name,
           temperament: Object.assign([],  ele.temperament).join("").split(","),
-          weight: ele.weight.metric,
+          weight:ele.weight.metric
         });
       });
 
@@ -127,7 +124,10 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-});
+}); 
+
+
+
 
 /* [ ] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
 [ ] Altura
@@ -138,7 +138,7 @@ Obtener el detalle de una raza de perro en particular
 Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
 Incluir los temperamentos asociados*/
 
-router.get("/:dogId", async (req, res, next) => {
+ router.get("/:dogId", async (req, res, next) => {
   const { dogId } = req.params;
   let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
@@ -188,5 +188,7 @@ router.get("/:dogId", async (req, res, next) => {
     next(error);
   }
 });
+ 
+
 
 module.exports = router;

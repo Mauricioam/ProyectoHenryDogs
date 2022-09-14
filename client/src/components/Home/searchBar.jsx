@@ -9,13 +9,10 @@ export default function SearchBar() {
 
   function onSubmit(event) {
     event.preventDefault();
-    try {
       dispatch(searchDog(search))
-     
       setSearch("");
-    } catch (error) {
-      alert(error);
-    }
+    
+    
   }
 
   function inputChange(event) {

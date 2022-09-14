@@ -37,6 +37,10 @@ export function getTemperments(){
     }
   }
 }
+ 
+
+
+
 
 export function getDogById(id){
   return async function (dispatch){
@@ -64,7 +68,7 @@ export function searchDog(search){
         payload: dogs.data
       })
     } catch (error) {
-     alert(error)
+     alert("No dog found with that name")
     }
   }
 }

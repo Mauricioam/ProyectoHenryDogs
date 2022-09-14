@@ -40,18 +40,24 @@ export default function reducer( state = initialState, action){
                    dogs: order
                 }
         case SIZE:
-            let orderSize = state.dogsFiltered.sort((a,b)=>{
-                if (parseInt(a.weight)  < parseInt(b.weight)){
+
+              let filterDog = state.dogsFiltered.filter(dog => dog.weight !== "NaN")
+             let dogNoWeigth = state.dogsFiltered.filter(dog => dog.weight == "NaN")
+                
+               filterDog.sort((a,b)=>{ 
+                 
+                 if (parseInt(a.weight)  < parseInt(b.weight)){
                     return action.payload === "big" ? 1 : -1
                 }
                 if(parseInt(a.weight) > parseInt(b.weight)){
                     return action.payload === "small" ? 1 : -1
                 }
-                return 0
+                return 0   
             })
+            let result = filterDog.concat(dogNoWeigth)
             return{
                 ...state,
-                dogs: orderSize
+                dogs: result
             }
             case GET_TEMPERAMENTS:
             return{
@@ -93,8 +99,7 @@ export default function reducer( state = initialState, action){
                 case CLEAR:{
                     return{
                         ...state,
-                        idDogs : [],
-                        
+                        idDogs : [], 
                     }
                 }
         default:

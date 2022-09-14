@@ -27,7 +27,6 @@
   height: 100%;
   align-items: center;
   padding: 1rem 0 1.5rem 0;
- 
   background-color: #FFD439;}
 .nav_select{
   padding: 0.2rem;
@@ -35,12 +34,13 @@
   
 }
 .pagiation_container{
- 
+  height: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
 background-color: #FFD439;  
 padding-bottom: 1.5rem;
+
  
 }
 .pagination_number{
@@ -51,12 +51,35 @@ padding-bottom: 1.5rem;
   padding: 0.3rem;
   color: antiquewhite;
   background-color: black;
-  border:  black ;
   border-radius: 0.7rem;
   width: 2rem;
   height: 1rem;
 }
-
+.current_page{
+  background-color: #FFD439;
+}
+.page{
+  border: double black;
+  padding:0 0.3rem 0 0.2rem;
+  border-radius: 1rem;
+  color: red;
+}
+.pag_button{
+    width: 7rem;
+    height: 1.8rem;
+    margin: 0 3rem 0 3rem;
+    border-radius: 1rem ;
+    background-color: black;
+    color: antiquewhite;
+    font-weight: 300;
+}
+.pag_button:hover{
+  color: black;
+  background-color: antiquewhite;
+  cursor: pointer;
+  border:  antiquewhite;
+  cursor: pointer;
+}
 .pagination_number:hover{
   color: black;
   background-color: antiquewhite;

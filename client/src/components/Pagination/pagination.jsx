@@ -1,5 +1,10 @@
+import { useState } from "react";
 
-export default function Pagination({numDogs,dogsLength,handlePaged}){
+ export default function Pagination({numDogs,dogsLength,handlePaged,setCurrentPage}){
+
+
+
+
     let pages = [];
     let totalPages = Math.ceil( dogsLength/ numDogs )
     for (let i = 1; i <= totalPages; i++) {
@@ -15,3 +20,5 @@ export default function Pagination({numDogs,dogsLength,handlePaged}){
   
   
 }
+
+ 
