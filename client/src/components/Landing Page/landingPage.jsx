@@ -10,7 +10,7 @@ export default function LandingPage() {
       <NavLink to="/home" className="link">
       <h3 className="landing_button"><span className="button"> Find your next four legs friend here</span></h3>
       </NavLink>
-      <p className="photo_text">Foto de <a className="photo_link" href="https://unsplash.com/es/@alvannee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alvan Nee</a> en <a href="https://unsplash.com/es?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+      <p className="photo_text">Foto de <a className="photo_link" href="https://unsplash.com/es/@alvannee?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Alvan Nee</a> en <a href="https://unsplash.com/es?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a></p>
       </div>  
     </div>
   );

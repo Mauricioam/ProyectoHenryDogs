@@ -11,12 +11,11 @@ import styles from "../styles/Loading/loading.css"
 
 export  default  function Home() {
     const [ order,setOrder ] = useState("")
-    
     const [currentPage, setCurrentPage] = useState(1)
     const [numDogs,setNumDogs] = useState(8)
   
     //get alldogs
-    let dispatch = useDispatch()
+  let dispatch = useDispatch()
   let dogs =  useSelector((state) => state.dogs)
 
     useEffect(() => {
@@ -66,7 +65,6 @@ function handleOrderBySize(e){
     dispatch(sortByTemp(e.target.value))
   
   setCurrentPage(1)
-  console.log(e.target.value)
 } 
  
 function handleAllOrCreated(e){ 
@@ -135,6 +133,7 @@ function handleAllOrCreated(e){
                  name={dog.name}
                  temperament={dog.temperament}
                  weight={dog.weight}
+                 
                />
               </NavLink>
              );

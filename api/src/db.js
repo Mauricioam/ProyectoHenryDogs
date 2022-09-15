@@ -35,6 +35,7 @@ const { Dog , Temperament  } = sequelize.models;
 Dog.belongsToMany(Temperament, {
   through : "DogTemperament"
 })
+
 //relacion muchos a muchos 
 Temperament.belongsToMany(Dog, {
   through : "DogTemperament"

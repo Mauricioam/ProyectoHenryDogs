@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 const { Dog, Temperament } = require("../db");
 const { Op } = require("sequelize");
 const axios = require("axios");
@@ -44,7 +44,6 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-
 
  router.get("/", async (req, res, next) => {
   const { name } = req.query;
@@ -95,6 +94,7 @@ router.post("/", async (req, res, next) => {
       let dogsDb = await Dog.findAll({
         include: Temperament,
       });
+
       let dogsDbFiltered = dogsDb.map((ele) => {
         return {
           id: ele.id,
@@ -104,7 +104,7 @@ router.post("/", async (req, res, next) => {
           weight: `${ele.minWeight} - ${ele.maxWeight}`,
         };
       });
-   
+
 
 
        dogsApi.data.map((ele) => {
@@ -113,10 +113,11 @@ router.post("/", async (req, res, next) => {
           image: ele.image.url,
           name: ele.name,
           temperament: Object.assign([],  ele.temperament).join("").split(","),
-          weight:ele.weight.metric
+          weight:ele.weight.metric,
+      
         });
       });
-
+ 
       let allDogsFiltered = dogsDbFiltered.concat(arrangeTemp);
       
       return res.send(allDogsFiltered);
@@ -126,6 +127,7 @@ router.post("/", async (req, res, next) => {
   }
 }); 
 
+ 
 
 
 
@@ -138,7 +140,7 @@ Obtener el detalle de una raza de perro en particular
 Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
 Incluir los temperamentos asociados*/
 
- router.get("/:dogId", async (req, res, next) => {
+router.get("/:dogId", async (req, res, next) => {
   const { dogId } = req.params;
   let dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
@@ -174,7 +176,7 @@ Incluir los temperamentos asociados*/
           id: ele.id,
           image: ele.image.url,
           name: ele.name,
-          temperament: Object.assign([],  ele.temperament).join("").split(","),
+          temperament: Object.assign([], ele.temperament).join("").split(","),
           weight: ele.weight.metric,
           height: ele.height.metric,
           life_expectancy: ele.life_span,
@@ -188,7 +190,5 @@ Incluir los temperamentos asociados*/
     next(error);
   }
 });
- 
-
 
 module.exports = router;

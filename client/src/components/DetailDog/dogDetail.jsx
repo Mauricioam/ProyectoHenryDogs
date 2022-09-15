@@ -7,7 +7,7 @@ import { style } from "../styles/DetailCard/detailCard.css";
 
 export default function DetailDog() {
   const { id } = useParams();
-  console.log(id);
+  
   let idDogs = useSelector((state) => state.idDogs);
   let dispatch = useDispatch();
   useEffect(() => {

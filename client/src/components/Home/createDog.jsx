@@ -26,14 +26,16 @@ export default function CreateDog() {
   function handleTempSelect(e) {
     if (input.temperament.includes(e.target.value)) {
       alert("Can't choose same temperament");
-    } else if(input.temperament.length >= 10){
-      alert("Max 10 temperament per dog!")
+    } else if(input.temperament.length === 10){
+      console.log(input.temperament)
+      alert("Max 10 temperament!")
     } else {
       setInput((temp) => ({
         ...temp,
-        temperament: [...temp.temperament," ", e.target.value],
+        temperament: [...temp.temperament, e.target.value],
       }));
     }
+   
   }
 
   function resetTemp(e) {
@@ -188,7 +190,7 @@ export default function CreateDog() {
               <option key={temp.id} value={temp.name}>
                 {temp.name}
               </option>
-            ))}
+            ))} 
           </select>
           <ul  className="list_temperament" >
             <li className="temperament">
@@ -227,6 +229,8 @@ function validate(input) {
     error.minHeight = "Min-Height can't be greater than Max";
   } else if (Number(input.minHeight) === Number(input.maxHeight)) {
     error.minHeight = "Can't be equal";
+  } else if (Number(input.minHeight < 0 || Number(input.minHeight > 200))) {
+    error.minWeight = "Check the numbers, can't be negative and greater than 200cm"
   }
 
   if (!input.maxWeight || !input.minWeight) {
@@ -235,14 +239,16 @@ function validate(input) {
     error.minWeight = "Min-Height can't be greater than Max";
   } else if (Number(input.minWeight) === Number(input.maxWeight)) {
     error.minWeight = "Can't be equal";
+  } else if (Number(input.minWeight < 0 || Number(input.maxWeight > 120))) {
+    error.minWeight = "Check the numbers, can't be negative and greater than 120 kg"
   }
 
    if (input.image && !/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i.test(input.image)) {
     error.image = "Only URL";
   } 
 
-  if (input.life_expectancy > 15) {
-    error.life_expectancy = "Sure? The avarege dog lives about 10-13 years";
+  if (input.life_expectancy > 15 || input.life_expectancy < 0) {
+    error.life_expectancy = "Numbers from 1 to 16";
   }
 
   return error;

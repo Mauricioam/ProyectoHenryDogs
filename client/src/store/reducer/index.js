@@ -11,7 +11,6 @@ const initialState = {
 }
 
 export default function reducer( state = initialState, action){
-   
     switch(action.type){
         case GET_DOGS:
             return {
@@ -40,9 +39,9 @@ export default function reducer( state = initialState, action){
                    dogs: order
                 }
         case SIZE:
-
-              let filterDog = state.dogsFiltered.filter(dog => dog.weight !== "NaN")
-             let dogNoWeigth = state.dogsFiltered.filter(dog => dog.weight == "NaN")
+               
+            let filterDog = state.dogsFiltered.filter(dog => dog.weight !== "NaN")
+            let dogNoWeigth = state.dogsFiltered.filter(dog => dog.weight == "NaN")
                 
                filterDog.sort((a,b)=>{ 
                  
