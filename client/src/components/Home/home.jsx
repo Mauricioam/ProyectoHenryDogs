@@ -83,7 +83,7 @@ function handleAllOrCreated(e){
       <div className="nav-bar_container">
     <header className="header"><span className="main_title">Henry Dog App</span></header>
     <nav className="nav_container"> 
-    <SearchBar/>
+    <SearchBar setCurrentPage={setCurrentPage}/>
   
     
 

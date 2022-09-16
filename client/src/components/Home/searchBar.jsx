@@ -11,6 +11,7 @@ export default function SearchBar() {
     event.preventDefault();
       dispatch(searchDog(search))
       setSearch("");
+      setCurrentPage(1)
     
     
   }
