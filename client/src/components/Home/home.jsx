@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState , } from "react";
-import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrAll, unMount } from "../../store/action";
+import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrAll } from "../../store/action";
 import Dog from "./dogCard";
 import SearchBar from "./searchBar";
 import { NavLink } from "react-router-dom";
@@ -16,7 +16,7 @@ export  default  function Home() {
   
     //get alldogs
   let dispatch = useDispatch()
-  let dogs =  useSelector((state) => state.dogs)
+  let dogs =  useSelector((state) => state.dogsFiltered)
 
     useEffect(() => {
     dispatch(getDogs())
@@ -47,7 +47,6 @@ function handlePaged(page){
     e.preventDefault()
       dispatch(sort(e.target.value))
   
-    setCurrentPage(1)
     setOrder(e.target.value)
 }
 //order by size
@@ -63,7 +62,6 @@ function handleOrderBySize(e){
  function handleTempFilter(e){
   e.preventDefault()
     dispatch(sortByTemp(e.target.value))
-  
   setCurrentPage(1)
 } 
  
@@ -71,7 +69,7 @@ function handleAllOrCreated(e){
   e.preventDefault()
 
     dispatch(sortByCreatedOrAll(e.target.value))
-    setCurrentPage(1)
+  
    setOrder(e.target.value)
 }
 
