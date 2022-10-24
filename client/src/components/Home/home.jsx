@@ -69,8 +69,8 @@ function handleAllOrCreated(e){
   e.preventDefault()
 
     dispatch(sortByCreatedOrAll(e.target.value))
-  
    setOrder(e.target.value)
+   setCurrentPage(1)
 }
 
 

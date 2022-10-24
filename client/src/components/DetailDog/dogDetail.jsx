@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDogById, unMount } from "../../store/action";
 import { style } from "../styles/DetailCard/detailCard.css";
+import Loading from "../Loading/loading";
 
 export default function DetailDog() {
   const { id } = useParams();
@@ -18,8 +19,10 @@ export default function DetailDog() {
   }, [dispatch, id]);
 
   return (
-    
-    <div className="detail_container">
+    <>
+    {
+      idDogs.length ?   ( 
+         <div className="detail_container">
       <div className="image_container">
         <img src={idDogs[0]?.image} alt="dog" className="detail_image" />
       </div>
@@ -54,6 +57,9 @@ export default function DetailDog() {
           </div>
         </NavLink>
       </div>
-    </div>
+    </div>) : <Loading/>
+    }
+  
+  </>
   );
 }
