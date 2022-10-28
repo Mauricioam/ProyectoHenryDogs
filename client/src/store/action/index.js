@@ -1,14 +1,15 @@
 import axios from "axios";
 export const GET_DOGS = "GET_DOGS";
-export const SEARCH_DOG = "SEARCH_DOG"
-export const SORT = "SORT"
-export const SIZE = "SIZE"
-export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
-export const TEMPERAMENTS = "TEMPERAMENTS"
-export const POST_DOG = "POST_DOG"
-export const SORT_CREATED = "SORT_CREATED"
-export const DOG_ID = "DOG_ID"
-export const CLEAR =  "CLEAR"
+export const SEARCH_DOG = "SEARCH_DOG";
+export const SORT = "SORT";
+export const SIZE = "SIZE";
+export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+export const TEMPERAMENTS = "TEMPERAMENTS";
+export const POST_DOG = "POST_DOG";
+export const SORT_CREATED = "SORT_CREATED";
+export const DOG_ID = "DOG_ID";
+export const CLEAR =  "CLEAR";
+export const CLEAR_TEMPERAMENT = "CLEAR_TEMPERAMENT";
 
 export function getDogs() {
   return async function (dispatch) {
@@ -124,3 +125,12 @@ export function unMount(){
     type: CLEAR
   }
 }
+
+
+
+export function clearTemp(){
+  return {
+    type: CLEAR_TEMPERAMENT
+  }
+}
+

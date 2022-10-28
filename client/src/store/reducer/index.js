@@ -9,6 +9,7 @@ import {
   SORT_CREATED,
   DOG_ID,
   CLEAR,
+  CLEAR_TEMPERAMENT
 } from "../action";
 
 const initialState = {
@@ -43,8 +44,6 @@ export default function reducer(state = initialState, action) {
         }
         return 0;
       });
-      console.log(order)
-      console.log(state.dogsFiltered)
       return {
         ...state,
         dogsFiltered: order,
@@ -79,9 +78,6 @@ export default function reducer(state = initialState, action) {
           orderByTemp.push(state.dogsFiltered[i]);
         } 
       } 
-      /* console.log(state.dogsFiltered,"perros")
-        let orderByTemp = state.dogsFiltered.filter(dog => dog.temperament.includes(action.payload))
-        console.log(orderByTemp) */
       return {
         ...state,
         dogsFiltered: orderByTemp
@@ -106,12 +102,17 @@ export default function reducer(state = initialState, action) {
         ...state,
         idDogs: action.payload,
       };
-    case CLEAR: {
+    case CLEAR: 
       return {
         ...state,
         idDogs: [],
       };
-    }
+ 
+    case CLEAR_TEMPERAMENT:
+      return{
+        ...state,
+        orderByTemp: []
+      }
     default:
       return state;
   }

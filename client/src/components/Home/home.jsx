@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState , } from "react";
-import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrAll } from "../../store/action";
+import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrAll, clearTemp } from "../../store/action";
 import Dog from "./dogCard";
 import SearchBar from "./searchBar";
 import { NavLink } from "react-router-dom";
@@ -64,35 +64,41 @@ function handleOrderBySize(e){
     dispatch(sortByTemp(e.target.value))
   setCurrentPage(1)
 } 
- 
+ // filer all or created only
 function handleAllOrCreated(e){ 
   e.preventDefault()
-
     dispatch(sortByCreatedOrAll(e.target.value))
    setOrder(e.target.value)
    setCurrentPage(1)
 }
 
+//clear temp select
+function handleClearFilters(e){
+  e.preventDefault()
+   dispatch(clearTemp())
+   setOrder("")
+   console.log("clear")
+}
 
 
 
   return (
     <div className="main_conteiner">
-      <div className="nav-bar_container">
+    <div className="nav-bar_container">
     <header className="header"><span className="main_title">Henry Dog App</span></header>
     <nav className="nav_container"> 
     <SearchBar setCurrentPage={setCurrentPage}/>
   
     
-
+    <form>
    <select onChange={handleOrder}  className="nav_select" >
-    <option disabled selected>Order</option>
+    <option  selected>Order</option>
     <option value="fromAtoZ">A-Z</option>
     <option value="fromZtoA">Z-A</option>
   </select> 
 
 <select onChange={handleAllOrCreated}  className="nav_select" >
-  <option disabled selected>Select dogs</option>
+  <option  selected>Select dogs</option>
   <option value="all">All</option>
   <option value="created">Created</option>
 </select>
@@ -100,7 +106,7 @@ function handleAllOrCreated(e){
 
 
   <select onChange={handleTempFilter}  className="nav_select" >
-    <option disabled selected>Temperament</option>
+    <option  selected>Temperament</option>
     {temperaments.map(temp => <option key={temp.id} value={temp.name}>{temp.name}</option>)}
     
   </select>   
@@ -108,13 +114,17 @@ function handleAllOrCreated(e){
 
 
   <select onChange={handleOrderBySize}  className="nav_select" >
-    <option disabled selected>Size</option>
+    <option  selected>Size</option>
     <option value="big">Big Breeds</option>
     <option value="small">Small Breeds</option>
-  </select> 
+  </select>
+  <div className="left_navbar-createDog-clearFilter">
+  <button className="all_button" type="reset" value="reset">Clear FIlters</button>
     <NavLink to="/home/createDog">
     <button className="all_button">Create your Dog!</button>
     </NavLink> 
+    </div> 
+    </form>
     </nav> 
 
  <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} numDogs={numDogs} dogsLength={dogsLength} handlePaged={handlePaged}  />

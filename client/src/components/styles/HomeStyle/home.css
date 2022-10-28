@@ -23,9 +23,7 @@
   justify-content: center;
   align-items: center;
   width:100%;
-  padding: 0;
-  margin: 0;
-
+  
 }
 .nav_container{
   display: flex;
@@ -35,6 +33,7 @@
   width: 100%;
   align-items: center;
   padding:0;
+
  
 }
 .nav_select{
@@ -49,8 +48,7 @@
   justify-content: center;
 background-color: #FFD439;  
 padding-bottom: 1.5rem;
-
- 
+display: none;
 }
 .pagination_number{
   display: flex;
@@ -131,4 +129,5 @@ padding-bottom: 1.5rem;
     justify-content: center;
     align-items: center;
   }
+ 
 }
