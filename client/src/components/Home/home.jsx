@@ -122,8 +122,10 @@ function handleAllOrCreated(e){
       </div>
   
          <div className="card_container">
+       
               { showDogs.length ?  showDogs.map((dog) => {
               return (
+              <div className="card_items">
                <NavLink to={`/home/${dog.id}`}>
                <Dog
                  key={dog.id}
@@ -134,11 +136,11 @@ function handleAllOrCreated(e){
                  
                />
               </NavLink>
+               </div>
              );
            }): <Loading/> } 
 
-   
-          </div>
+        </div>
     </div>
     
   );
