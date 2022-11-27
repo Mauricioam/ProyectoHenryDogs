@@ -46,9 +46,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-background-color: #FFD439;  
-padding-bottom: 1.5rem;
-display: none;
+  background-color: #FFD439;  
+  padding-bottom: 1.5rem;
+border: so
 }
 .pagination_number{
   display: flex;
@@ -58,7 +58,6 @@ display: none;
   padding: 0.3rem;
   color: antiquewhite;
   background-color: black;
-  border-radius: 0.7rem;
   width: 2rem;
   height: 1rem;
 }

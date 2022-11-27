@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch  } from "react-redux";
 import { searchDog } from "../../store/action";
-import {style} from "../styles/SearchBar/searchBar.css"
+import "../styles/SearchBar/searchBar.css"
 
 export default function SearchBar({setCurrentPage}) {
   const [search, setSearch] = useState("");

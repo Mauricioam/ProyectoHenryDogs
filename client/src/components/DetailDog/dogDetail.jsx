@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDogById, unMount } from "../../store/action";
-import { style } from "../styles/DetailCard/detailCard.css";
+import  "../styles/DetailCard/detailCard.css";
 import Loading from "../Loading/loading";
 
 export default function DetailDog() {

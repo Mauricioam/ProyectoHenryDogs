@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getTemperments, postDog } from "../../store/action";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import style from "../styles/Create Dog/form.css";
+import  "../styles/Create Dog/form.css";
 
 export default function CreateDog() {
   const [input, setInput] = useState({

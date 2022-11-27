@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import styles from "../styles//LandinPageStyle/LandingPage.css";
-import photo from  "../../images/alvan-nee-8g0D8ZfFXyA-unsplash.jpg"
+import "../styles//LandinPageStyle/LandingPage.css";
+
 export default function LandingPage() {
   return (
     <div className="landingPage_container">

@@ -1,4 +1,4 @@
-import style from "../styles/Card/dogCard.css"
+import "../styles/Card/dogCard.css"
 //componente ilustrativo
 export default function Dog({name,image,temperament,weight}){
     return <div className="card">

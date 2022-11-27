@@ -5,9 +5,9 @@ import Dog from "./dogCard";
 import SearchBar from "./searchBar";
 import { NavLink } from "react-router-dom";
 import Pagination from "../Pagination/pagination";
-import style from "../styles/HomeStyle/home.css"
+import "../styles/HomeStyle/home.css"
 import Loading from "../Loading/loading";
-import styles from "../styles/Loading/loading.css"
+import "../styles/Loading/loading.css"
 
 export  default  function Home() {
     const [ order,setOrder ] = useState("")
