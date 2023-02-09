@@ -72,12 +72,9 @@ export default function reducer(state = initialState, action) {
         temperament: action.payload,
       };
     case TEMPERAMENTS:
-         let orderByTemp = [];
-      for (let i = 0; i < state.dogsFiltered.length; i++) {
-        if (state.dogsFiltered[i].temperament.includes(action.payload)) {
-          orderByTemp.push(state.dogsFiltered[i]);
-        } 
-      } 
+        let orderByTemp = state.dogs;
+      orderByTemp = orderByTemp.filter((item) => item.temperament.includes(action.payload))
+     
       return {
         ...state,
         dogsFiltered: orderByTemp
