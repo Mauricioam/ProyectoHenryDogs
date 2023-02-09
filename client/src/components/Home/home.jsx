@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState , } from "react";
+import { useEffect, useRef, useState , } from "react";
 import { getDogs, sort , sortBySize,getTemperments,sortByTemp , sortByCreatedOrAll, clearTemp } from "../../store/action";
 import Dog from "./dogCard";
 import SearchBar from "./searchBar";
@@ -73,13 +73,12 @@ function handleAllOrCreated(e){
 }
 
 //clear temp select
+const temperamentSelector = useRef()
 function handleClearFilters(e){
   e.preventDefault()
    dispatch(clearTemp())
-   setOrder("")
-   console.log("clear")
+   temperamentSelector.current.value = "Temperament" 
 }
-
 
 
   return (
@@ -105,7 +104,7 @@ function handleClearFilters(e){
 
 
 
-  <select onChange={handleTempFilter}  className="nav_select" >
+  <select onChange={handleTempFilter} ref={temperamentSelector}  className="nav_select" >
     <option  selected>Temperament</option>
     {temperaments.map(temp => <option key={temp.id} value={temp.name}>{temp.name}</option>)}
     
@@ -119,7 +118,7 @@ function handleClearFilters(e){
     <option value="small">Small Breeds</option>
   </select>
   <div className="left_navbar-createDog-clearFilter">
-  <button className="all_button" type="reset" value="reset">Clear FIlters</button>
+  <button className="all_button" type="reset" value="reset" onClick={(e)=> handleClearFilters(e)} >Clear FIlters</button>
     <NavLink to="/home/createDog">
     <button className="all_button">Create your Dog!</button>
     </NavLink> 
@@ -133,9 +132,9 @@ function handleClearFilters(e){
   
          <div className="card_container">
        
-              { showDogs.length ?  showDogs.map((dog) => {
+              { showDogs.length ?  showDogs.map((dog,i) => {
               return (
-              <div className="card_items">
+              <div key={i} className="card_items">
                <NavLink to={`/home/${dog.id}`}>
                <Dog
                  key={dog.id}

@@ -129,6 +129,7 @@ export function unMount(){
 
 
 export function clearTemp(){
+
   return {
     type: CLEAR_TEMPERAMENT
   }

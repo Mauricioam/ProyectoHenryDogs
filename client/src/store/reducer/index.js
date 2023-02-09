@@ -108,7 +108,7 @@ export default function reducer(state = initialState, action) {
     case CLEAR_TEMPERAMENT:
       return{
         ...state,
-        orderByTemp: []
+          dogsFiltered: state.dogs
       }
     default:
       return state;
